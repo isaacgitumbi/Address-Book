@@ -1,8 +1,9 @@
 
-function Contact(name, phone, email) {
+function Contact(name, phone, email, address) {
     this.name = name;
     this.phone = phone;
     this.email = email;
+    this.address = address;
   }
   
   Contact.prototype.getCardHTML = function() {
@@ -11,6 +12,7 @@ function Contact(name, phone, email) {
         <h3>${this.name}</h3>
         <p>Phone: ${this.phone}</p>
         <p>Email: ${this.email}</p>
+        <p>Address: ${this.address}</p>
       </div>
     `;
   };
@@ -41,14 +43,16 @@ function Contact(name, phone, email) {
     const name = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
     const email = document.getElementById('email').value.trim();
+    const address = document.getElementById('address').value.trim();
     
     if (name && phone && email) {
-      const newContact = new Contact(name, phone, email);
+      const newContact = new Contact(name, phone, email, address);
       myAddressBook.addContact(newContact);
   
       document.getElementById('name').value = '';
       document.getElementById('phone').value = '';
       document.getElementById('email').value = '';
+      document.getElementById('address').value = '';
     } else {
       alert('Please fill in all fields!');
     }
